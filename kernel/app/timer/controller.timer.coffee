@@ -8,24 +8,35 @@ lapser.timer.controller = ({views, changePage}) ->
   formatTime = (moment) ->
     moment.format('HH:mm:ss:SS')
 
+  formatTimeDiff = (now, before) ->
+    Math.round(now.clone().diff(before) / 1000)
+
   updateClock = ->
     views.timerForm.render "clock": formatTime(moment())
 
-  record = (label) ->
-    now = formatTime moment()
+  record = (label, now, last, first) ->
     laps.push
       label: label
-      time: now
-      timeFromLast: now
-      timeFromStart: now
+      timeRaw: now
+      time: formatTime now
+      timeFromLast: formatTimeDiff now, last
+      timeFromStart: formatTimeDiff now, first
+
+  recordStart = ->
+    now = moment()
+    record 'START', now, now, now
+
+  recordNext = (label) ->
+    now = moment()
+    record label || "Lap ##{laps.length}", now, _.last(laps).timeRaw, _.first(laps).timeRaw
 
   views.homePage.bind "start", ->
-    record "Start"
+    recordStart()
     changePage "timerForm"
-    setInterval updateClock, 100
+    setInterval updateClock, 10
     views.timerForm.render "laps": laps
 
   views.timerForm.bind "capture", ->
     views.timerForm.get "label", (label) ->
-      record label || 'Lap'
+      recordNext label
       views.timerForm.render "laps": laps
