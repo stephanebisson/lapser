@@ -4,15 +4,14 @@
     %table
       {{#laps}}
       %tr
-        %td.label(rowspan=3) {{label}}
+        %td.label(colspan=3) {{label}}
+      %tr
         %td {{time}}
-      %tr
-        %td {{timeFromLast}} seconds
-      %tr
-        %td {{timeFromStart}} seconds from start
+        %td +{{timeFromLast}} s.
+        %td +{{timeFromStart}} s. (from start)
       {{/laps}}
 
-  %h3 Click on CAPTURE to add an event to your timeline
+  %h3 Click CAPTURE to add an event to your timeline
   %input#label
   %button#capture CAPTURE
   %br
