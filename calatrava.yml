@@ -1,0 +1,6 @@
+---
+:project_name: lapser
+:platforms:
+- ios
+- droid
+- web

@@ -1,0 +1,5 @@
+features:
+  - home
+  - timer
+kernel_libs:
+#  - assets/lib/underscore.js

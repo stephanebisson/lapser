@@ -1,0 +1,7 @@
+.rake
+.sass-cache
+node_modules
+.idea
+Gemfile.lock
+web/apache/logs
+web/apache/public
