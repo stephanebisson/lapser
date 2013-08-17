@@ -5,13 +5,20 @@ lapser.timer.controller = ({views, changePage}) ->
 
   laps = []
 
+  record = (label) ->
+    now = moment()
+    laps.push
+      label: label
+      time: moment()
+
   views.homePage.bind "start", ->
+    record "Start"
     changePage "timerForm"
+    views.timerForm.render "laps": laps
 
   views.timerForm.bind "capture", ->
-    laps.push
-      time: Date()
-      label: 'no label'
-    views.timerForm.render "laps": laps
+    views.timerForm.get "label", (label) ->
+      record label || 'Lap'
+      views.timerForm.render "laps": laps
 
   views.homePage.render "Hello from controller"

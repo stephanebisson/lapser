@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    -%w{zepto ICanHaz underscore}.each do |filename|
+    -%w{zepto ICanHaz underscore moment}.each do |filename|
       %script(type="text/javascript" src="scripts/#{filename}.js")
 
     - Calatrava::Project.current.mobile_web.scripts.each do |filename|

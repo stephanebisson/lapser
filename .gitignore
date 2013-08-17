@@ -5,3 +5,4 @@ node_modules
 Gemfile.lock
 web/apache/logs
 web/apache/public
+web/public
