@@ -33,7 +33,8 @@ lapser.timer.controller = ({views, changePage}) ->
   views.homePage.bind "start", ->
     recordStart()
     changePage "timerForm"
-    setInterval updateClock, 10
+    # setInterval updateClock, 10
+    updateClock()
     views.timerForm.render "laps": laps
 
   views.timerForm.bind "capture", ->

@@ -16,5 +16,11 @@
         <activity android:name=".ConversionForm"
                   android:label="@string/app_name">
         </activity>
+        <activity android:name=".HomePage"
+                  android:label="@string/app_name">
+        </activity>
+        <activity android:name=".TimerForm"
+                  android:label="@string/app_name">
+        </activity>
     </application>
 </manifest> 

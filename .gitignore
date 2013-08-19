@@ -6,3 +6,9 @@ Gemfile.lock
 web/apache/logs
 web/apache/public
 web/public
+.DS_Store
+artifacts/development artifacts/lapser-debug.apk
+artifacts
+droid/lapser/bin
+droid/lapser/gen
+droid/lapser/assets

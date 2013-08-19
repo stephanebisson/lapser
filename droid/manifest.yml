@@ -1,4 +1,6 @@
 features:
-  - converter
+  - home
+  - timer
 kernel_libs:
+  - assets/lib/moment.js
 #  - assets/lib/underscore.js

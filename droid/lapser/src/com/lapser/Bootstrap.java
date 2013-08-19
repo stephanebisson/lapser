@@ -17,6 +17,6 @@ public class Bootstrap extends Activity
     app.provideActivityContext(this);
 
     // And then start your first feature
-    app.launchFlow("example.converter.start");
+    app.launchFlow("lapser.timer.start");
   }
 }
