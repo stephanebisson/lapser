@@ -1,0 +1,219 @@
+@font-face {
+    font-family: "Quicksand-Light";
+    src: url('Quicksand_Light.otf');
+}
+
+@font-face {
+    font-family: "DS-DIGIB";
+    src: url('DS-DIGIB.TTF');
+}
+
+@font-face {
+    font-family: "digital-7-mono";
+    src: url('digital-7-mono.ttf');
+}
+
+$main-blue: #2f3641;
+$sub-blue: #1f2837;
+$accent: #3bb878;
+$text-color: #d4d4d4;
+$dark-text-color: darken($text-color, 35%);
+
+$title-font: Quicksand-Light;
+$text-font: Calibri;
+$action-font: Monserrat;
+$digital-font: digital-7-mono;
+
+// mixins
+
+@mixin page {
+    width: 300px;
+    height: 500px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    background-color: $main-blue;
+    color: $text-color;
+}
+
+@mixin bevel {
+    border-top-width: 0px;
+    border-bottom-width: 1px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+
+    border-style: inset;
+    border-bottom-color: lighten($sub-blue, 14%);
+
+    border-radius: 2px;
+}
+
+@mixin clock-text {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    font-size: 1.4em;
+}
+
+// elements
+
+body {
+    background-color: gray;
+}
+
+button {
+    border: 0;
+    height: 30px;
+    background-color: $accent;
+    font-family: $text-font;
+    color: $text-color;
+    border-radius: 2px;
+    text-transform: uppercase;
+    font-size: 1em;
+    width: 100px;
+}
+
+input {
+    @include bevel;
+    height: 34px;
+    border-radius: 4px;
+    background-color: $sub-blue;
+    font-family: $text-font;
+    color: $text-color;
+    padding-left: 10px;
+    margin: 0;
+    font-size: 1em;
+}
+
+// classes
+
+.special-r {
+    color: $accent;
+}
+
+// pages
+
+#homePage {
+    @include page;
+    #logo {
+        width: 100%;
+        position: absolute;
+        top: 60px;
+
+        h1 {
+            font-family: $title-font;
+            letter-spacing: 8px;
+            font-size: 1.9em;
+        }
+    }
+
+    #intro {
+        width: 100%;
+        font-family: $text-font;
+        position: absolute;
+        top: 170px;
+
+        h3 {
+            margin-bottom: 10px;
+            font-size: 0.8em;
+        }
+
+        p {
+            width: 70%;
+            margin: auto;
+            color: $dark-text-color;
+            font-size: 0.8em;
+        }
+    }
+
+    #action {
+        width: 100%;
+        position: absolute;
+        bottom: 50px;
+        font-family: $action-font;
+
+        p {
+            padding-top: 20px;
+            font-size: 0.5em;
+        }
+    }
+}
+
+/* ---------------------------------------- */
+
+#timerForm {
+    @include page;
+    #title {
+        width: 100%;
+        height: 50px;
+        font-family: $title-font;
+        letter-spacing: 8px;
+        background-color: $sub-blue;
+        font-size: 2em;
+        padding-top: 20px;
+    }
+
+    #clock {
+        @include bevel;
+        background-color: $sub-blue;
+        height: 50px;
+        margin: 20px;
+        position: relative;
+        font-size: 1.2em;
+        font-family: $digital-font;
+
+        #clock-bg {
+            color: darken($sub-blue, 3%);
+            @include clock-text;
+        }
+
+        #clock-fg {
+            @include clock-text;
+        }
+    }
+
+    #action {
+        margin: 20px;
+        padding: 0;
+
+        input {
+            width: 160px;
+            margin-right: 16px;
+        }
+
+        button {
+            margin: 0;
+            width: 80px;
+        }
+    }
+
+    #laps {
+        font-family: $text-font;
+        table {
+            color: $text-color;
+            width: 100%;
+            td {
+                padding: 6px;
+
+                &.activity-name {
+                    text-align: right;
+                }
+                &.activity-time {
+                    text-align: left;
+                }
+                &.activity-time-delta {
+                    text-align: left;
+                    font-size: 0.8em;
+                }
+                &.separator {
+                    text-align: center;
+                    margin: 0;
+                    padding: 0;
+                    width: 1px;
+                    border-left: solid 1px $accent;
+                }
+            }
+
+        }
+    }
+}

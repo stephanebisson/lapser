@@ -12,7 +12,7 @@ lapser.timer.controller = ({views, changePage}) ->
     Math.round(now.clone().diff(before) / 1000)
 
   updateClock = ->
-    views.timerForm.render "clock": formatTime(moment())
+    views.timerForm.render "clock-fg": formatTime(moment())
 
   record = (label, now, last, first) ->
     laps.push
