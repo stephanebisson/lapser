@@ -3,11 +3,11 @@
       package="com.lapser"
       android:versionCode="1"
       android:versionName="1.0">
-    <uses-permission android:name="android.permission.INTERNET" />
     <application android:label="@string/app_name"
                  android:name="Lapser">
         <activity android:name=".Bootstrap"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name" 
+                  android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -17,10 +17,12 @@
                   android:label="@string/app_name">
         </activity>
         <activity android:name=".HomePage"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name" 
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity android:name=".TimerForm"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
     </application>
 </manifest> 

@@ -1,16 +1,17 @@
-@font-face {
-    font-family: "Quicksand-Light";
-    src: url('Quicksand_Light.otf');
-}
 
 @font-face {
-    font-family: "DS-DIGIB";
-    src: url('DS-DIGIB.TTF');
+    font-family: "Quicksand-Light";
+    src: url('../images/Quicksand_Light.otf');
 }
 
 @font-face {
     font-family: "digital-7-mono";
-    src: url('digital-7-mono.ttf');
+    src: url('../images/digital-7-mono.ttf');
+}
+
+@font-face {
+    font-family: "Monserrat";
+    src: url('../images/Montserrat-Regular.ttf');
 }
 
 $main-blue: #2f3641;
@@ -58,7 +59,8 @@ $digital-font: digital-7-mono;
 // elements
 
 body {
-    background-color: gray;
+    // background-color: gray;
+    background-color: $main-blue;
 }
 
 button {
@@ -191,6 +193,7 @@ input {
         font-family: $text-font;
         height: 280px;
         overflow: scroll;
+        -webkit-overflow-scrolling: touch;
         table {
             color: $text-color;
             width: 100%;
