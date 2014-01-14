@@ -14,6 +14,10 @@ lapser.timer.controller = ({views, changePage}) ->
   updateClock = ->
     views.timerForm.render "clock": formatTime(moment())
 
+  updateClockLater = ->
+    updateClock()
+    calatrava.bridge.timers.start 1, updateClockLater
+
   record = (label, now, last, first) ->
     laps.push
       label: label
@@ -31,10 +35,10 @@ lapser.timer.controller = ({views, changePage}) ->
     record label || "Lap ##{laps.length}", now, _.last(laps).timeRaw, _.first(laps).timeRaw
 
   views.homePage.bind "start", ->
+    laps = []
     changePage "timerForm"
-    updateClock()
     recordStart()
-    setInterval updateClock, 100
+    updateClockLater()
     views.timerForm.render "laps": laps
 
   views.timerForm.bind "capture", ->
