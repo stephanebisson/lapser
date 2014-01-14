@@ -177,7 +177,7 @@ input {
         padding: 0;
 
         input {
-            width: 160px;
+            width: 140px;
             margin-right: 16px;
         }
 
@@ -189,6 +189,8 @@ input {
 
     #laps {
         font-family: $text-font;
+        height: 280px;
+        overflow: scroll;
         table {
             color: $text-color;
             width: 100%;

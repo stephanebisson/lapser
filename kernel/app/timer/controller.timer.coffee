@@ -12,7 +12,7 @@ lapser.timer.controller = ({views, changePage}) ->
     Math.round(now.clone().diff(before) / 1000)
 
   updateClock = ->
-    views.timerForm.render "clock-fg": formatTime(moment())
+    views.timerForm.render "clock": formatTime(moment())
 
   record = (label, now, last, first) ->
     laps.push
@@ -31,13 +31,18 @@ lapser.timer.controller = ({views, changePage}) ->
     record label || "Lap ##{laps.length}", now, _.last(laps).timeRaw, _.first(laps).timeRaw
 
   views.homePage.bind "start", ->
-    recordStart()
     changePage "timerForm"
-    # setInterval updateClock, 10
     updateClock()
+    recordStart()
+    setInterval updateClock, 100
     views.timerForm.render "laps": laps
 
   views.timerForm.bind "capture", ->
     views.timerForm.get "label", (label) ->
       recordNext label
       views.timerForm.render "laps": laps
+      views.timerForm.render "label": ""
+
+
+
+

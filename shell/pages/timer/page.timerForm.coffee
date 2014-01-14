@@ -12,7 +12,8 @@ calatrava.pageView.timerForm = ->
   renderSection = (key, data) ->
     switch key
       when 'laps' then renderLaps($p('#laps'), data)
-      when 'clock' then $p('#clock').text(data)
+      when 'clock' then $p('#clock-fg').text(data)
+      when 'label' then $p('#label').val(data)
 
   bind: (event, handler) ->
     # console.log "event: #{event}"
