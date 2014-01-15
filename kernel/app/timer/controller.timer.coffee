@@ -4,12 +4,28 @@ lapser.timer ?= {}
 lapser.timer.controller = ({views, changePage}) ->
 
   laps = []
+  visible = false
 
   formatTime = (moment) ->
     moment.format('HH:mm:ss:SS')
 
   formatTimeDiff = (now, before) ->
     Math.round(now.clone().diff(before) / 1000)
+
+  updateClock = ->
+    views.timerForm.render "clock": formatTime(moment())
+
+  startTimer = ->
+    unless visible
+      visible = true
+      updateClockLater()    
+
+  stopTimer = ->
+    visible = false
+
+  updateClockLater = ->
+    updateClock()
+    calatrava.bridge.timers.start 0.1, updateClockLater if visible
 
   record = (label, now, last, first) ->
     laps.push
@@ -32,6 +48,12 @@ lapser.timer.controller = ({views, changePage}) ->
     changePage "timerForm"
     recordStart()
     views.timerForm.render "laps": laps
+
+  views.timerForm.bind "pageOpened", ->
+    startTimer()
+
+  views.timerForm.bind "hide", ->
+    stopTimer()
 
   views.timerForm.bind "capture", ->
     views.timerForm.get "label", (label) ->

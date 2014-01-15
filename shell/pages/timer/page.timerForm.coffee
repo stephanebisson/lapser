@@ -4,7 +4,6 @@ calatrava.pageView.timerForm = ->
 
   $page = $('#timerForm')
   $p = (sel)-> $(sel, $page)
-  visible = false
 
   renderLaps = (p, data) ->
     p.empty().html ich.lapsTmpl
@@ -15,16 +14,6 @@ calatrava.pageView.timerForm = ->
       when 'laps' then renderLaps($p('#laps'), data)
       when 'clock' then $p('#clock-fg').text(data)
       when 'label' then $p('#label').val(data)
-
-  formatTime = (moment) ->
-    moment.format('HH:mm:ss:SS')
-
-  updateClock = ->
-    renderSection "clock", formatTime(moment())
-
-  updateClockLater = ->
-    updateClock()
-    calatrava.bridge.timers.start 1, updateClockLater if visible
 
   bind: (event, handler) ->
     # console.log "event: #{event}"
@@ -42,10 +31,7 @@ calatrava.pageView.timerForm = ->
   show: ->
     # console.log('showing...')
     $page.show()
-    visible = true
-    updateClockLater()
 
   hide: ->
     # console.log('hiding...')
-    visible = false
     $page.hide()
